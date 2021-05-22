@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { signup } from "../features/authentication/auth";
+import { useDispatch } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -51,7 +53,10 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
   const dispatch = useDispatch();
+<<<<<<< HEAD
   const [errorMessage, setErrorMessage] = useState(null);
+=======
+>>>>>>> 900db90 (temp changes)
   const [formState, setFormState] = useState({
     firstname: "",
     lastname: "",
@@ -64,6 +69,7 @@ export default function SignUp() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
 
     const res = await dispatch(signup(formState));
     console.log(res);
@@ -82,6 +88,11 @@ export default function SignUp() {
         usertype: "",
       });
     }
+=======
+    const res =  dispatch(signup(formState));
+    console.log(res);
+    // console.log(formState);
+>>>>>>> 900db90 (temp changes)
   };
   return (
     <Container component="main" maxWidth="xs" className={classes.root}>

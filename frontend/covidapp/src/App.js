@@ -25,3 +25,9 @@ function App() {
 }
 
 export default App;
+
+
+
+
+// profile page, same, for user|driver|admin
+// booking page
