@@ -23,7 +23,6 @@ const useStyles = makeStyles({
   },
   toolbar: {
     display: "flex",
-    width: "100vw",
     justifyContent: "space-between",
   },
   menuButton: {
