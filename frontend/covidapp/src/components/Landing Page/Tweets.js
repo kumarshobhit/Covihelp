@@ -29,18 +29,19 @@ export default function Tweets() {
             const res = await axios.get(TWEETS_SEARCH_API);
             const data = res.data.response.api_response.statuses;
             return new Promise((resolve, _) => resolve(data));
-            // setTweets(data);
         }
         if (city != '') {
             getTweets().then(res => setTweets(res))
-            console.log(tweets)
         }
+        console.log(tweets);
     }, [city])
 
     return (
         <Grid container justify='center' alignItems='center'>
             <Box p={10}>
-                <Typography variant='h5' gutterBottom className={classes.StatusText}>
+                <Typography variant='h5' style={{
+                    marginBottom: '30px'
+                }} className={classes.StatusText}>
                     Type a city name below to get related Tweets
                 </Typography>
                 <TextField
@@ -52,24 +53,36 @@ export default function Tweets() {
                 />
             </Box>
 
-            {/* {
-                tweets.map((tweet) => 
-                    (
-                        <Grid item xs={12}>
-                            {tweet.full_text}
-                        </Grid>
-                ))
-            } */}
-
             {tweets.map((result, id) => (
-                <div key={id} className="flex justify-start text-gray-700  bg-gray-200 dark:bg-gray-1100 whitespace-pre-wrap  rounded-md px-2 py-2 my-2">
-
-                    <div className="px-2 w-full">
-                        <div className="flex flex-row justify-between text-sm my-1 dark:text-primary-400 font-normal text-black-500 tracking-wide">
+                <div key={id} style={{
+                    display: "flex",
+                    justifyContent: 'flex-start',
+                    padding: '10px 30px',
+                    margin: '10px',
+                    width: '600px',
+                    boxShadow: '1px 1px 5px grey',
+                    borderRadius: '3px'
+                }} >
+                    <div style={{
+                        width: '100%',
+                        padding: '0px 10px'
+                    }}>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                            }}
+                        >
                             <TimeAgo
                                 datetime={result.created_at}
                             />
-                            <span className="pb-1 text-sm font-semibold text-gray-700 mb-2">
+                            <span
+                                style={{
+                                    paddingBottom: '5px',
+                                    fontWeight: '500',
+                                    marginBottom: '5px'
+                                }}
+                            >
                                 <FontAwesomeIcon icon={faTwitter} />
                                 <a
                                     href={`https://twitter.com/i/web/status/${result.id_str}`}
@@ -82,7 +95,12 @@ export default function Tweets() {
                             </span>
                         </div>
 
-                        <div className="flex-grow text-black dark:text-white font-semibold">
+                        <div
+                            style={{
+                                paddingBottom: '5px',
+                                fontWeight: '500',
+                                marginBottom: '5px',
+                            }}>
                             {result.full_text}
                         </div>
                     </div>
